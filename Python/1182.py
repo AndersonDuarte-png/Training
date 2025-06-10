@@ -11,7 +11,7 @@ if T == "S":
     Soma = float (0)
     for x in range(12):
         Soma = float(array[int(x)][C]) + float(Soma)
-    print("{}".format(Soma))
+    print("{:.1f}".format(Soma))
 
 elif T == "M":
     Soma = float (0)
