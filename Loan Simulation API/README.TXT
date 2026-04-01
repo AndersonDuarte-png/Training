@@ -1,0 +1,1 @@
+API de simulação de emprestimo com o chat GPT-5.3 / GPT-5.4 fazendo papel de BA
