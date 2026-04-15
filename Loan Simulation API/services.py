@@ -1,7 +1,4 @@
-
-
 #funcões
-
 def calculate_monthly_payment(request):
     if request.system == "PRICE":
         return price_calculate_monthly_payment(request)
@@ -12,13 +9,13 @@ def calculate_total_payment(request,installments):
     if request.system == "PRICE":
         return price_calculate_total_payment(request)
     elif request.system == "SAC":
-        return sac_calculate_total_payment(request,installments)
+        return sac_calculate_total_payment(installments)
 
 def calculate_total_interest(request,installments):
     if request.system == "PRICE":
         return price_calculate_total_interest(request)
     elif request.system == "SAC":
-        return sac_calculate_total_interest(request,installments)
+        return sac_calculate_total_interest(installments)
 
 
 #pRICE FUNCTIONS
@@ -38,14 +35,20 @@ def sac__calculate_monthly_payment(request):
     amortization = request.amount / request.months
     return float(interest + amortization)
 
-def sac_calculate_total_payment(request,installments):
+def sac_calculate_total_payment(installments):
     total = 0
     for n in installments:
         total+=n.payment
     return float(total)
 
-def sac_calculate_total_interest(request,installments):
+def sac_calculate_total_interest(installments):
     total = 0
     for n in installments:
         total+=n.interest
     return float(total)
+
+
+def calculate_best_option(price_interest,sac_interest):
+    if round(price_interest) < round(sac_interest):
+        return "PRICE"
+    return "SAC"
