@@ -29,6 +29,11 @@ def price_calculate_monthly_payment(request):
     monthly_payment = request.amount * (request.interest_rate * (1 + request.interest_rate)**request.months) / ((1 + request.interest_rate)**request.months - 1)
     return monthly_payment
 
+def calculate_savings_amount(sac_total_interest, price_total_interest):
+    return abs(sac_total_interest - price_total_interest)
+
+
+
 #SAC FUNCTIONS
 def sac__calculate_monthly_payment(request):
     interest = request.amount * request.interest_rate
