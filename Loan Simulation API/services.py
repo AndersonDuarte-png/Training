@@ -54,6 +54,13 @@ def sac_calculate_total_interest(installments):
 
 
 def calculate_best_option(price_interest,sac_interest):
-    if round(price_interest) < round(sac_interest):
+    if price_interest < sac_interest:
         return "PRICE"
-    return "SAC"
+    elif price_interest > sac_interest:
+        return "SAC"
+    return "EQUAL"
+
+def calculate_savings_percent(savings_amount, maior_total_interest):
+    if savings_amount == maior_total_interest:
+        return 0
+    return (savings_amount/maior_total_interest)*100

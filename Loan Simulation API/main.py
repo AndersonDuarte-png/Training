@@ -30,14 +30,16 @@ def compare_loan(request: CompareRequest):
     sac_total_payment = services.sac_calculate_total_payment(installments)
     savings_amount = services.calculate_savings_amount(sac_total_interest,price_total_interest)
     best_option = services.calculate_best_option(price_total_interest,sac_total_interest)
+    savings_percent = services.calculate_savings_percent(savings_amount,max(price_total_interest,sac_total_interest))
     
     return{
         "price_total_payment": round(price_total_payment,2),
         "price_total_interest": round(price_total_interest,2),
         "sac_total_payment": round(sac_total_payment,2),
         "sac_total_interest": round(sac_total_interest,2),
+        "savings_amount":round(savings_amount,2),
+        "savings_percent":round(savings_percent,2),
         "best_option":best_option,
-        "savings_amount":round(savings_amount,2) 
     }
 
 
